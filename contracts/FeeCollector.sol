@@ -27,6 +27,8 @@ contract FeeCollector {
         balance += msg.value;
     }
 
+    // a withdraw function to receive the amount sent
+    // amount and destination of address as parameters
     function withdraw(uint amount, address payable addressDestination) public {
         addressDestination.transfer(amount);
         balance -= amount;
