@@ -30,9 +30,16 @@ contract FeeCollector {
     // a withdraw function to receive the amount sent
     // amount and destination of address as parameters
     function withdraw(uint amount, address payable addressDestination) public {
+        // to secure the withdraw public function
+        // it must be callled only by the owner
+        // using the require function to check for only the owner to access it
+        require( msg.sender == owner, "Only owner can withdraw");
+        
         addressDestination.transfer(amount);
         balance -= amount;
     }
+
+
 
 
 }
